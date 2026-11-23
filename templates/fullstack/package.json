@@ -1,0 +1,11 @@
+{
+  "name": "frame-fullstack-template",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter \"./frontend\" --filter \"./backend\" dev",
+    "db:start": "supabase start",
+    "db:reset": "supabase db reset",
+    "db:types": "supabase gen types typescript --local > shared/src/database.types.ts"
+  }
+}

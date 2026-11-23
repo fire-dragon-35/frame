@@ -1,0 +1,27 @@
+# Supabase CLI configuration. SQL migrations in ./migrations are the single source of truth for the schema.
+project_id = "frame-app"
+
+[api]
+port = 54321
+schemas = ["public"]
+
+[db]
+port = 54322
+major_version = 15
+
+[auth]
+site_url = "http://localhost:5173"
+enable_signup = true
+
+[auth.email]
+enable_confirmations = false
+
+[storage]
+enabled = true
+
+[realtime]
+enabled = true
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]

@@ -1,0 +1,49 @@
+# AGENTS.md — rules for AI coding agents
+
+Read `FRAME.md` before any architectural change. These rules are mandatory.
+
+## Workflow
+
+Inspect → Plan → Reuse → Request approval if needed → Implement → Test → Report.
+
+1. Inspect the existing structure, `packages/core/src/registry`, and `docs/components/` before writing code.
+2. Reuse approved components. Do not rebuild what exists.
+3. Find the root cause before fixing. No local patches for structural problems.
+4. Keep changes small. No unrelated refactoring, no speculative abstractions.
+5. Test relevant behavior (`pnpm test`); verify responsive/UI results when you can.
+6. Report what changed and every compromise. Update docs when architecture changes.
+
+## Package boundaries (enforced by ESLint)
+
+- `@frame/core` imports nothing from `@frame/ui` or `@frame/themes`. No brand styling, no business logic.
+- `@frame/themes` imports nothing from core/ui. It owns tokens, presets, schema.
+- `@frame/ui` may use core-neutral CSS variables but must not import `@frame/themes`.
+- Business logic lives only in the application layer (`templates/fullstack`, your app), never in packages.
+
+## Layout and styling
+
+- Compose pages from the six primitives: `AppShell`, `Page`, `Container`, `Grid`, `Stack`, `Panel`.
+- Grid owns column placement (12 columns); Stack owns linear spacing; Container owns max width; Panel owns padding.
+- Do not add layout CSS to grid children, page-level arbitrary CSS, inline styles, utility-class sprawl, or hardcoded colors/spacing.
+- Use semantic tokens (`--color-*`, `--radius-*`, `--space-*`, `--control-height`, `--focus-ring`). Never reach into another component's CSS classes.
+- Breakpoints: sm 640, md 768, lg 1024, xl 1280 in CSS media queries. Design mobile composition intentionally; do not just shrink desktop.
+
+## Accessibility
+
+Semantic HTML, keyboard operation, visible focus, labelled controls, correct ARIA, sufficient contrast, `prefers-reduced-motion`, never color alone for status, correct focus management in overlays.
+
+## New shared components need approval
+
+Do not add or change shared primitives, shared UI components or public contracts silently. Propose first, covering: problem solved; responsibility; proposed API; place in the hierarchy; why existing components are insufficient; reusability; responsive and accessibility implications; testing/maintenance impact. Wait for explicit approval. App-specific feature components need no approval.
+
+## Backend and data (Supabase)
+
+- Supabase SQL migrations (`templates/fullstack/supabase/migrations`) are the only schema source. No second ORM/migration system.
+- Every user-data table: RLS enabled plus explicit policies. Frontend checks are never sufficient authorization.
+- Never expose the service-role key in browser code; never commit credentials; update `.env.example`.
+- Fastify queries as the verified user (RLS applies). Privileged operations: narrow, justified, documented.
+- Validate all external input with Zod at system boundaries; verify webhook signatures.
+
+## Before you finish
+
+`pnpm check` must pass (typecheck, lint, format, tests, build).

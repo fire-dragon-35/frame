@@ -1,0 +1,34 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap, var(--space-4));
+}
+.item {
+  grid-column: span var(--grid-span-base, 12);
+  min-width: 0;
+}
+@media (min-width: 640px) {
+  .item {
+    grid-column: span var(--grid-span-sm, var(--grid-span-base, 12));
+  }
+}
+@media (min-width: 768px) {
+  .item {
+    grid-column: span var(--grid-span-md, var(--grid-span-sm, var(--grid-span-base, 12)));
+  }
+}
+@media (min-width: 1024px) {
+  .item {
+    grid-column: span
+      var(--grid-span-lg, var(--grid-span-md, var(--grid-span-sm, var(--grid-span-base, 12))));
+  }
+}
+@media (min-width: 1280px) {
+  .item {
+    grid-column: span
+      var(
+        --grid-span-xl,
+        var(--grid-span-lg, var(--grid-span-md, var(--grid-span-sm, var(--grid-span-base, 12))))
+      );
+  }
+}

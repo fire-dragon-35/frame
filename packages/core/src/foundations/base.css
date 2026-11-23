@@ -1,0 +1,26 @@
+/* Minimal global stylesheet. Neutral fallbacks used when @frame/themes is not installed. */
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-gutter: 1rem;
+  --space-panel: 1.25rem;
+  --container-max: 72rem;
+  --shell-sidebar-width: 16rem;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+@media (min-width: 768px) {
+  :root {
+    --space-gutter: 1.5rem;
+  }
+}

@@ -1,0 +1,28 @@
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+}
+.navigation {
+  grid-column: 1;
+}
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+}
+.sidebar {
+  display: none;
+}
+.main {
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .body.hasSidebar {
+    grid-template-columns: var(--shell-sidebar-width) minmax(0, 1fr);
+  }
+  .sidebar {
+    display: block;
+  }
+}

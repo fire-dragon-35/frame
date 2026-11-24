@@ -1,6 +1,17 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { Button, Checkbox, Field, Input, Tabs, Table } from './index';
+import {
+  Badge,
+  Button,
+  Checkbox,
+  Field,
+  Input,
+  ListItem,
+  Slider,
+  Tabs,
+  Table,
+  Text,
+} from './index';
 
 describe('@frame/ui', () => {
   it('Button defaults to type=button and fires onClick', () => {
@@ -51,5 +62,49 @@ describe('@frame/ui', () => {
     );
     expect(screen.getByRole('columnheader', { name: 'Name' })).toBeInTheDocument();
     expect(screen.getByRole('cell', { name: 'Ada' })).toBeInTheDocument();
+  });
+  it('Slider is labelled, shows its formatted value and reports numbers', () => {
+    const fn = vi.fn();
+    render(
+      <Slider
+        label="Rent"
+        min={0}
+        max={10}
+        value={4}
+        format={(v) => `${v} k`}
+        onValueChange={fn}
+      />,
+    );
+    const r = screen.getByLabelText('Rent');
+    expect(r).toHaveAttribute('aria-valuetext', '4 k');
+    expect(screen.getByText('4 k')).toBeInTheDocument();
+    fireEvent.change(r, { target: { value: '7' } });
+    expect(fn).toHaveBeenCalledWith(7);
+  });
+  it('ListItem is a button exposing selection', () => {
+    render(
+      <ListItem selected highlighted>
+        Row
+      </ListItem>,
+    );
+    const b = screen.getByRole('button', { name: 'Row' });
+    expect(b).toHaveAttribute('aria-pressed', 'true');
+    expect(b).toHaveAttribute('data-highlighted');
+  });
+  it('Badge shows text, and a dot is hidden from screen readers', () => {
+    render(
+      <>
+        <Badge tone="custom" color="#000" background="#eee">
+          Tag
+        </Badge>
+        <Badge shape="dot" data-testid="d" />
+      </>,
+    );
+    expect(screen.getByText('Tag')).toBeInTheDocument();
+    expect(screen.getByTestId('d')).toHaveAttribute('aria-hidden', 'true');
+  });
+  it('Text renders the requested element', () => {
+    render(<Text as="p">Hello</Text>);
+    expect(screen.getByText('Hello').tagName).toBe('P');
   });
 });

@@ -6,3 +6,7 @@ export { Checkbox, type CheckboxProps } from './forms/Checkbox';
 export { Dialog, type DialogProps } from './overlays/Dialog';
 export { Tabs, type TabsProps, type TabItem } from './navigation/Tabs';
 export { Table, type TableProps, type Column } from './data/Table';
+export { Text, type TextProps } from './typography/Text';
+export { Badge, type BadgeProps } from './data/Badge';
+export { Slider, type SliderProps } from './forms/Slider';
+export { ListItem, type ListItemProps } from './data/ListItem';

@@ -1,0 +1,32 @@
+{
+  "name": "@frame/supabase",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Auth and Stripe billing for Frame apps on Supabase: React provider, hooks, sign-in form, paywall, plus the migration and Edge Functions the app deploys.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "frame-supabase": "./bin/frame-supabase.mjs"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.0"
+  },
+  "peerDependencies": {
+    "@frame/core": "*",
+    "@frame/ui": "*",
+    "react": "^18.3.0 || ^19.0.0",
+    "react-dom": "^18.3.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vite": "^6.0.0"
+  }
+}

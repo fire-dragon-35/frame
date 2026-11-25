@@ -1,8 +1,8 @@
 export type ComponentStatus = 'approved' | 'experimental' | 'deprecated';
 export interface ComponentEntry {
   name: string;
-  category: 'layout' | 'ui' | 'site' | 'composition';
-  package: '@frame/core' | '@frame/ui' | '@frame/site';
+  category: 'layout' | 'ui' | 'site' | 'auth' | 'composition';
+  package: '@frame/core' | '@frame/ui' | '@frame/site' | '@frame/supabase';
   responsibility: string;
   status: ComponentStatus;
   docs: string;
@@ -233,5 +233,53 @@ export const registry: ComponentEntry[] = [
     responsibility: 'Generic landing section',
     status: 'approved',
     docs: 'docs/components/site.md',
+  },
+  {
+    name: 'FrameProvider',
+    category: 'auth',
+    package: '@frame/supabase',
+    responsibility: 'Session and subscription state',
+    status: 'approved',
+    docs: 'docs/backend/auth-billing.md',
+  },
+  {
+    name: 'SignInForm',
+    category: 'auth',
+    package: '@frame/supabase',
+    responsibility: 'Magic link sign in',
+    status: 'approved',
+    docs: 'docs/backend/auth-billing.md',
+  },
+  {
+    name: 'RequireAuth',
+    category: 'auth',
+    package: '@frame/supabase',
+    responsibility: 'Signed-in only content',
+    status: 'approved',
+    docs: 'docs/backend/auth-billing.md',
+  },
+  {
+    name: 'Paywall',
+    category: 'auth',
+    package: '@frame/supabase',
+    responsibility: 'Paying only content',
+    status: 'approved',
+    docs: 'docs/backend/auth-billing.md',
+  },
+  {
+    name: 'CheckoutButton',
+    category: 'auth',
+    package: '@frame/supabase',
+    responsibility: 'Opens Stripe Checkout',
+    status: 'approved',
+    docs: 'docs/backend/auth-billing.md',
+  },
+  {
+    name: 'BillingPortalButton',
+    category: 'auth',
+    package: '@frame/supabase',
+    responsibility: 'Opens the Stripe customer portal',
+    status: 'approved',
+    docs: 'docs/backend/auth-billing.md',
   },
 ];

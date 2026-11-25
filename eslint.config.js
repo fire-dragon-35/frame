@@ -27,6 +27,10 @@ export default tseslint.config(
     rules: { 'no-restricted-imports': ['error', { patterns: ['@frame/ui', '@frame/core'] }] },
   },
   {
+    files: ['packages/supabase/src/**'],
+    rules: { 'no-restricted-imports': ['error', { patterns: ['@frame/themes'] }] },
+  },
+  {
     files: ['packages/site/src/**'],
     rules: { 'no-restricted-imports': ['error', { patterns: ['@frame/themes'] }] },
   },

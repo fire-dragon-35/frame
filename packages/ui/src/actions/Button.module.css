@@ -44,3 +44,9 @@
     transition: filter 120ms;
   }
 }
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}

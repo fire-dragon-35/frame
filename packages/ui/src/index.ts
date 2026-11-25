@@ -10,3 +10,4 @@ export { Text, type TextProps } from './typography/Text';
 export { Badge, type BadgeProps } from './data/Badge';
 export { Slider, type SliderProps } from './forms/Slider';
 export { ListItem, type ListItemProps } from './data/ListItem';
+export { ButtonLink, type ButtonLinkProps } from './actions/ButtonLink';

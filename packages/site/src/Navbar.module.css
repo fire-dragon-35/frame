@@ -1,0 +1,100 @@
+.bar {
+  border-bottom: 1px solid var(--color-border, #e5e5e5);
+  background: var(--color-background, #fff);
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6, 1.5rem);
+  min-height: 3.5rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  margin-right: auto;
+  color: var(--color-foreground, #171717);
+  text-decoration: none;
+}
+.nav,
+.actions {
+  display: none;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+}
+.link {
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  border-radius: var(--radius-control, 0.5rem);
+  color: var(--color-foreground-secondary, var(--color-muted, #525252));
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 500;
+  text-decoration: none;
+}
+.link:hover {
+  background: var(--color-surface-secondary, #f5f5f5);
+  color: var(--color-foreground, #171717);
+}
+.link[aria-current='page'] {
+  color: var(--color-foreground, #171717);
+  font-weight: 600;
+}
+.link:focus-visible,
+.brand:focus-visible,
+.burger:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.menu {
+  position: relative;
+}
+.burger {
+  display: grid;
+  gap: 4px;
+  padding: var(--space-3, 0.75rem);
+  border-radius: var(--radius-control, 0.5rem);
+  cursor: pointer;
+  list-style: none;
+}
+.burger::-webkit-details-marker {
+  display: none;
+}
+.burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-foreground, #171717);
+}
+.sheet {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 10;
+  display: grid;
+  gap: var(--space-2, 0.5rem);
+  min-width: 14rem;
+  padding: var(--space-2, 0.5rem);
+  border: 1px solid var(--color-border, #e5e5e5);
+  border-radius: var(--radius-panel, 0.75rem);
+  background: var(--color-background, #fff);
+}
+.sheetNav,
+.sheetActions {
+  display: grid;
+  gap: var(--space-1, 0.25rem);
+}
+@media (min-width: 768px) {
+  .nav,
+  .actions {
+    display: flex;
+  }
+  .brand {
+    margin-right: 0;
+  }
+  .nav {
+    margin-right: auto;
+  }
+  .menu {
+    display: none;
+  }
+}

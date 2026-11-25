@@ -1,8 +1,8 @@
 export type ComponentStatus = 'approved' | 'experimental' | 'deprecated';
 export interface ComponentEntry {
   name: string;
-  category: 'layout' | 'ui' | 'composition';
-  package: '@frame/core' | '@frame/ui';
+  category: 'layout' | 'ui' | 'site' | 'composition';
+  package: '@frame/core' | '@frame/ui' | '@frame/site';
   responsibility: string;
   status: ComponentStatus;
   docs: string;
@@ -153,5 +153,85 @@ export const registry: ComponentEntry[] = [
     responsibility: 'Type scale: size, tone, weight, nowrap',
     status: 'approved',
     docs: 'docs/components/ui.md',
+  },
+  {
+    name: 'ButtonLink',
+    category: 'ui',
+    package: '@frame/ui',
+    responsibility: 'A link styled as a button',
+    status: 'approved',
+    docs: 'docs/components/ui.md',
+  },
+  {
+    name: 'Navbar',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Site top bar: brand, links, actions, mobile menu',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'Footer',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Site footer: brand, link columns, legal line',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'Hero',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Landing page top: h1, lead, actions',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'Stats',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Key numbers band',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'Steps',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Numbered steps',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'FeatureGrid',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Feature cards',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'ChipList',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Names as chips',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'CallToAction',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Closing call to action',
+    status: 'approved',
+    docs: 'docs/components/site.md',
+  },
+  {
+    name: 'Section',
+    category: 'site',
+    package: '@frame/site',
+    responsibility: 'Generic landing section',
+    status: 'approved',
+    docs: 'docs/components/site.md',
   },
 ];

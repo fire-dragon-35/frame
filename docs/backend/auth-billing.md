@@ -75,4 +75,5 @@ Run `sync` again after updating Frame; commit the copied files in the app.
    `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated`,
    `customer.subscription.deleted`; copy the signing secret.
 3. Stripe → Settings → Billing → Customer portal: turn it on (cancel, update payment method).
-4. Supabase → Authentication → URL configuration: Site URL and redirect URLs = your app's URLs (magic links).
+4. Supabase → Authentication → URL configuration: Site URL = your app's URL; Redirect URLs = `https://your-app/**`
+   and `http://localhost:5173/**`. Sign-in links use PKCE (`?code=`), so hash routing (`#/page`) works.

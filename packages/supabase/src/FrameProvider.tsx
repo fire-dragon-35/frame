@@ -137,9 +137,11 @@ export function useAuth() {
     session,
     user,
     loading,
-    /** Sends a magic link; the user comes back to `redirectTo` (default: this page) signed in. */
-    signInWithEmail: (email: string, redirectTo = window.location.href) =>
-      client.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } }),
+    /** Sends a magic link; the user comes back to `redirectTo` signed in (default: this site's root, no hash; it must be in Supabase's redirect URLs). */
+    signInWithEmail: (
+      email: string,
+      redirectTo = window.location.origin + window.location.pathname,
+    ) => client.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } }),
     signOut: () => client.auth.signOut(),
   };
 }

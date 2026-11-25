@@ -15,7 +15,14 @@ export function getSupabase(url?: string, key?: string): SupabaseClient {
       'Frame: set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY (Supabase publishable key).',
     );
   shared = createClient(u, k, {
-    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
+    // PKCE: the sign-in link returns `?code=…`, which works with hash routing (`#/page`); the implicit flow puts the
+    // token in the hash and breaks it.
+    auth: {
+      flowType: 'pkce',
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
   });
   return shared;
 }

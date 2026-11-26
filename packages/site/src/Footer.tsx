@@ -34,7 +34,11 @@ export function Footer({
 }: FooterProps) {
   return (
     <footer
-      className={cx(styles.footer, align === 'center' && styles.center, tone === 'dark' && styles.dark)}
+      className={cx(
+        styles.footer,
+        align === 'center' && styles.center,
+        tone === 'dark' && styles.dark,
+      )}
     >
       <Container size={size}>
         <div className={styles.grid}>

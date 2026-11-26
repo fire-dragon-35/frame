@@ -20,6 +20,10 @@
 body {
   margin: 0;
 }
+/* a jump to an anchor lands below AppShell's sticky navigation */
+[id] {
+  scroll-margin-top: 4.5rem;
+}
 @media (min-width: 768px) {
   :root {
     --space-gutter: 1.5rem;

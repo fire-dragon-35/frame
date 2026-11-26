@@ -5,6 +5,9 @@
   grid-template-rows: auto 1fr;
 }
 .navigation {
+  position: sticky; /* the top bar stays while the page scrolls under it */
+  top: 0;
+  z-index: 10;
   grid-column: 1;
 }
 .body {

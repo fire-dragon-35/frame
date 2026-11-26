@@ -1,6 +1,9 @@
 .bar {
   border-bottom: 1px solid var(--color-border, #e5e5e5);
-  background: var(--color-background, #fff);
+  /* glass: the page scrolls visibly under the bar */
+  background: color-mix(in srgb, var(--color-background, #fff) 72%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
 }
 .row {
   display: flex;

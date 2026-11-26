@@ -90,3 +90,9 @@ stacked on phones. Put it in a `Section` that carries the plan's name as its tit
 ## Footer alignment
 
 `align="center"` centres the brand and tagline above the link columns, which sit side by side, and the legal line.
+
+## Centred layout
+
+`Hero`, `Section` and `Page.Header` take `align="center"`: title, lead and actions are centred; a Hero's points stay a
+left-aligned list, centred as a block; a Section's content keeps its own layout. For a centred page use the same
+`size` on every block (usually `narrow`) so all edges line up.

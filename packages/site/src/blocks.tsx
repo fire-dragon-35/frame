@@ -20,6 +20,8 @@ export interface SectionProps {
   /** `muted` = a full width tinted band with borders. */
   tone?: 'default' | 'muted';
   size?: Size;
+  /** `center` centres the title and lead (the content keeps its own layout). */
+  align?: 'start' | 'center';
   id?: string;
   children: ReactNode;
 }
@@ -34,6 +36,7 @@ export function Section({
   label,
   tone = 'default',
   size = 'wide',
+  align = 'start',
   id,
   children,
 }: SectionProps) {
@@ -45,7 +48,7 @@ export function Section({
     >
       <Container size={size}>
         {(title || lead) && (
-          <div className={styles.sectionHead}>
+          <div className={cx(styles.sectionHead, align === 'center' && styles.center)}>
             {title && <Heading level={2}>{title}</Heading>}
             {lead && <p className={styles.lead}>{lead}</p>}
           </div>
@@ -66,18 +69,32 @@ export interface HeroProps {
   /** Benefits under the title, as a large `CheckList`. */
   points?: CheckItem[];
   size?: Size;
+  /** `center` centres the title, lead and actions; the points stay a left-aligned list, centred as a block. */
+  align?: 'start' | 'center';
 }
 
 /** The top of a landing page: the one h1, a lead, benefit points and the main actions. */
-export function Hero({ eyebrow, title, lead, actions, points, size = 'wide' }: HeroProps) {
+export function Hero({
+  eyebrow,
+  title,
+  lead,
+  actions,
+  points,
+  size = 'wide',
+  align = 'start',
+}: HeroProps) {
   return (
     <section className={styles.hero}>
       <Container size={size}>
-        <div className={styles.heroText}>
+        <div className={cx(styles.heroText, align === 'center' && styles.center)}>
           {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
           <Heading level="display">{title}</Heading>
           {lead && <div className={styles.lead}>{lead}</div>}
-          {points && <CheckList size="lg" items={points} />}
+          {points && (
+            <div className={styles.points}>
+              <CheckList size="lg" items={points} />
+            </div>
+          )}
           {actions && <div className={styles.actions}>{actions}</div>}
         </div>
       </Container>

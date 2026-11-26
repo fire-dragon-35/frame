@@ -21,3 +21,7 @@
     padding-block: var(--space-8);
   }
 }
+.center {
+  align-items: center;
+  text-align: center;
+}

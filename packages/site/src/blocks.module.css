@@ -211,3 +211,17 @@
   font-size: var(--text-xs, 0.75rem);
   color: var(--color-muted, #525252);
 }
+.center {
+  justify-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+.center .lead {
+  margin-inline: auto;
+}
+.center .actions {
+  justify-content: center;
+}
+.center .points {
+  text-align: start;
+}

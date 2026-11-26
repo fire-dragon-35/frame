@@ -1,16 +1,15 @@
 .shell {
   min-height: 100dvh;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-direction: column;
 }
 .navigation {
   position: sticky; /* the top bar stays while the page scrolls under it */
   top: 0;
   z-index: 10;
-  grid-column: 1;
 }
 .body {
+  flex: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   min-width: 0;

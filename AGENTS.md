@@ -33,28 +33,28 @@ Inspect → Plan → Reuse → Request approval if needed → Implement → Test
 
 ## Which component for what (check here before writing any markup)
 
-| You need                                    | Use                                                                                                         | Reference                    |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| page frame, header, content                 | `AppShell` › `Container` › `Page` (`Page.Header`, `Page.Content`)                                           | docs/components/layout.md    |
-| items in a row or column, gaps, wrapping    | `Stack` (`direction`, `gap`, `align`, `wrap`, `as`)                                                         | layout.md                    |
-| columns that change per breakpoint          | `Grid` + `Grid.Item span={{ base, md }}`                                                                    | layout.md                    |
-| a bordered box                              | `Panel` (`flush` for edge-to-edge content such as a map or a list)                                          | layout.md                    |
-| any text with a size, tone or weight        | `Text`                                                                                                      | docs/components/ui.md        |
-| any heading (hero, page, section, card)     | `Heading level="display" \| 1 \| 2 \| 3` (never a raw `<h1>`–`<h6>`)                                        | ui.md                        |
-| benefits or features with check marks       | `CheckList` (`size="lg"` in a hero)                                                                         | ui.md                        |
-| a status, category, tag or colour from data | `Badge` (`tone="custom"` for data colours)                                                                  | ui.md                        |
-| a tappable row in a list, selected state    | `ListItem` inside `Panel flush`                                                                             | ui.md                        |
-| a number range filter                       | `Slider`                                                                                                    | ui.md                        |
-| on/off                                      | `Checkbox`                                                                                                  | ui.md                        |
-| form control with label/error               | `Field` + `Input` / `Select`                                                                                | ui.md                        |
-| action                                      | `Button`                                                                                                    | ui.md                        |
-| modal                                       | `Dialog`                                                                                                    | ui.md                        |
-| a link that looks like a button             | `ButtonLink`                                                                                                | ui.md                        |
-| site top bar with links and sign in         | `Navbar` (`@frame/site`)                                                                                    | docs/components/site.md      |
-| site footer                                 | `Footer` (`@frame/site`)                                                                                    | site.md                      |
-| landing page                                | `Hero` then `Section`s: `Stats`, `Steps`, `FeatureGrid`, `ChipList`, `CallToAction`, `MediaCard`, `Pricing` | site.md                      |
-| sign in, signed-in only pages               | `FrameProvider`, `SignInForm`, `RequireAuth`, `useAuth` (`@frame/supabase`)                                 | docs/backend/auth-billing.md |
-| paid features, checkout, manage billing     | `Paywall`, `CheckoutButton`, `BillingPortalButton`, `useSubscription`                                       | auth-billing.md              |
+| You need                                    | Use                                                                                                             | Reference                    |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| page frame, header, content                 | `AppShell` (`navigation`, `footer`) › `Container` › `Page` (`Page.Header`, `Page.Content`; `Page.Header align`) | docs/components/layout.md    |
+| items in a row or column, gaps, wrapping    | `Stack` (`direction`, `gap`, `align`, `wrap`, `as`)                                                             | layout.md                    |
+| columns that change per breakpoint          | `Grid` + `Grid.Item span={{ base, md }}`                                                                        | layout.md                    |
+| a bordered box                              | `Panel` (`flush` for edge-to-edge content such as a map or a list)                                              | layout.md                    |
+| any text with a size, tone or weight        | `Text`                                                                                                          | docs/components/ui.md        |
+| any heading (hero, page, section, card)     | `Heading level="display" \| 1 \| 2 \| 3` (never a raw `<h1>`–`<h6>`)                                            | ui.md                        |
+| benefits or features with check marks       | `CheckList` (`size="lg"` in a hero)                                                                             | ui.md                        |
+| a status, category, tag or colour from data | `Badge` (`tone="custom"` for data colours)                                                                      | ui.md                        |
+| a tappable row in a list, selected state    | `ListItem` inside `Panel flush`                                                                                 | ui.md                        |
+| a number range filter                       | `Slider`                                                                                                        | ui.md                        |
+| on/off                                      | `Checkbox`                                                                                                      | ui.md                        |
+| form control with label/error               | `Field` + `Input` / `Select`                                                                                    | ui.md                        |
+| action                                      | `Button`                                                                                                        | ui.md                        |
+| modal                                       | `Dialog`                                                                                                        | ui.md                        |
+| a link that looks like a button             | `ButtonLink`                                                                                                    | ui.md                        |
+| site top bar with links and sign in         | `Navbar` (`@frame/site`)                                                                                        | docs/components/site.md      |
+| site footer                                 | `Footer` (`@frame/site`)                                                                                        | site.md                      |
+| landing page                                | `Hero` then `Section`s: `Stats`, `Steps`, `FeatureGrid`, `ChipList`, `CallToAction`, `MediaCard`, `Pricing`     | site.md                      |
+| sign in, signed-in only pages               | `FrameProvider`, `SignInForm`, `RequireAuth`, `useAuth` (`@frame/supabase`)                                     | docs/backend/auth-billing.md |
+| paid features, checkout, manage billing     | `Paywall`, `CheckoutButton`, `BillingPortalButton`, `useSubscription`                                           | auth-billing.md              |
 
 If nothing fits, write an app component (CSS Module next to it, tokens only) and say so in your report. A colour that
 comes from data goes through `Badge tone="custom"`; never an inline style in app code. Third-party widgets (maps,

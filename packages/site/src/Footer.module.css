@@ -1,5 +1,5 @@
 .footer {
-  margin-top: calc(var(--space-section, 3rem) / 2);
+  margin-top: calc(var(--space-section, 3rem) / 2); /* never touches the content above */
   padding-block: var(--space-8, 2rem) var(--space-6, 1.5rem);
   border-top: 1px solid var(--color-border, #e5e5e5);
 }

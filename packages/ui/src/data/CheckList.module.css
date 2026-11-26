@@ -1,0 +1,50 @@
+.list {
+  display: grid;
+  gap: var(--space-4, 1rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.item {
+  display: flex;
+  gap: var(--space-3, 0.75rem);
+  align-items: flex-start;
+}
+.mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-primary, #2563eb) 12%, transparent);
+  color: var(--color-primary, #2563eb);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 700;
+}
+.body {
+  display: grid;
+  gap: var(--space-1, 0.25rem);
+}
+.title {
+  font-size: var(--text-md, 1rem);
+  font-weight: 600;
+  color: var(--color-foreground, #171717);
+}
+.text {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-foreground-secondary, var(--color-muted, #525252));
+}
+.lg {
+  gap: var(--space-6, 1.5rem);
+}
+.lg .mark {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.lg .title {
+  font-size: var(--text-lg, 1.25rem);
+}
+.lg .text {
+  font-size: var(--text-md, 1rem);
+}

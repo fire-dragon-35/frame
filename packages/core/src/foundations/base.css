@@ -6,6 +6,7 @@
   --space-4: 1rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
+  --space-section: 3rem; /* between landing sections; 4rem from 768 px */
   --space-gutter: 1rem;
   --space-panel: 1.25rem;
   --container-max: 72rem;
@@ -22,5 +23,6 @@ body {
 @media (min-width: 768px) {
   :root {
     --space-gutter: 1.5rem;
+    --space-section: 4rem;
   }
 }

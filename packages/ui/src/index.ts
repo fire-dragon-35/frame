@@ -7,6 +7,8 @@ export { Dialog, type DialogProps } from './overlays/Dialog';
 export { Tabs, type TabsProps, type TabItem } from './navigation/Tabs';
 export { Table, type TableProps, type Column } from './data/Table';
 export { Text, type TextProps } from './typography/Text';
+export { Heading, type HeadingProps } from './typography/Heading';
+export { CheckList, type CheckListProps, type CheckItem } from './data/CheckList';
 export { Badge, type BadgeProps } from './data/Badge';
 export { Slider, type SliderProps } from './forms/Slider';
 export { ListItem, type ListItemProps } from './data/ListItem';

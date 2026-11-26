@@ -1,5 +1,6 @@
 import { Container, type ContainerProps } from '@frame/core';
 import type { ReactNode } from 'react';
+import { cx } from './cx';
 import styles from './Footer.module.css';
 
 export interface FooterColumn {
@@ -15,12 +16,21 @@ export interface FooterProps {
   /** The bottom line: copyright, attribution. */
   legal?: ReactNode;
   size?: ContainerProps['size'];
+  /** `start` (default): brand left, columns beside it. `center`: everything centred, brand above the columns. */
+  align?: 'start' | 'center';
 }
 
-/** The site's footer: brand and tagline, link columns (one column on phones, side by side from 640 px), a legal line. */
-export function Footer({ brand, tagline, columns = [], legal, size }: FooterProps) {
+/** The site's footer: brand and tagline, link columns (side by side from 640 px; under `center` always), a legal line. */
+export function Footer({
+  brand,
+  tagline,
+  columns = [],
+  legal,
+  size,
+  align = 'start',
+}: FooterProps) {
   return (
-    <footer className={styles.footer}>
+    <footer className={cx(styles.footer, align === 'center' && styles.center)}>
       <Container size={size}>
         <div className={styles.grid}>
           <div className={styles.about}>

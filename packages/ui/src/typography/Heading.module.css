@@ -1,0 +1,31 @@
+.heading {
+  margin: 0;
+  font-family: var(--font-heading, inherit);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-foreground, #171717);
+  text-wrap: balance;
+}
+.ldisplay {
+  font-size: var(--heading-display, 2.25rem);
+  line-height: 1.08;
+}
+.l1 {
+  font-size: var(--heading-1, 2rem);
+}
+.l2 {
+  font-size: var(--heading-2, 1.5rem);
+}
+.l3 {
+  font-size: var(--heading-3, 1.25rem);
+  letter-spacing: -0.01em;
+}
+@media (min-width: 768px) {
+  .ldisplay {
+    font-size: var(--heading-display-lg, 3rem);
+  }
+  .l2 {
+    font-size: var(--heading-2-lg, 1.75rem);
+  }
+}

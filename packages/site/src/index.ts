@@ -8,6 +8,10 @@ export {
   FeatureGrid,
   ChipList,
   CallToAction,
+  MediaCard,
+  Pricing,
   type SectionProps,
   type HeroProps,
+  type MediaCardProps,
+  type PricingProps,
 } from './blocks';

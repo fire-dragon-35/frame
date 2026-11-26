@@ -98,3 +98,26 @@ See their source in `packages/ui/src` (short, typed props) and the playground (`
 | `--color-foreground-secondary` | mix of foreground and background | Text `tone="secondary"` |
 | `--color-highlight`            | 8 % primary on surface           | ListItem `highlighted`  |
 | `--color-selected`             | `--color-foreground`             | ListItem `selected`     |
+
+## Heading
+
+```tsx
+<Heading level="display">Alla hyresannonser på ett ställe.</Heading>  // hero, h1
+<Heading level={1}>Villkor</Heading>                                  // page title, h1
+<Heading level={2}>Kartor</Heading>                                   // section title, h2
+<Heading level={3} as="h1">Lägenheter</Heading>                       // tool title: small size, h1 element
+```
+
+`level` picks the size (tokens `--heading-display` 2.25 rem → 3 rem from 768 px, `--heading-1` 2 rem, `--heading-2`
+1.5 rem → 1.75 rem, `--heading-3` 1.25 rem), weight 700, line height 1.15, tracking −0.02 em, `--font-heading`.
+`as` changes only the element (for the outline). No margins: spacing comes from `Stack`, `Page` or `Section`.
+
+## CheckList
+
+```tsx
+<CheckList items={[{ title: 'Din egen plats', text: 'Flytta pinnen …' }]} />
+<CheckList size="lg" items={points} />  // in a hero
+```
+
+A `<ul>` of items, each a check mark in a soft `--color-primary` circle, an optional semibold title and a line of
+secondary text. `md` (default): title `--text-md`, text `--text-sm`; `lg`: `--text-lg` and `--text-md`.

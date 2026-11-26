@@ -67,3 +67,26 @@ import {
 
 Actions are `ButtonLink` from `@frame/ui` (a link styled as `Button`: `primary`, `secondary`, `ghost`).
 `size` is the `Container` size; use the same value for navbar, page and footer so their edges line up.
+
+## Rhythm
+
+`Section` (and every block built on it) has half of `--space-section` above and below, so any two blocks are one
+`--space-section` apart (3 rem, 4 rem from 768 px). `Hero` has a full one above. Compose a landing page as
+`<Hero />` followed by blocks, with no wrapper and no gaps of your own. `Section` takes `title` (a `Heading level={2}`)
+and an optional `lead`.
+
+## MediaCard
+
+`<MediaCard title="Stockholm" image="/cities/stockholm.webp" href="#/karta" />`: a photo that covers the card, the
+title on a dark fade at the bottom. Without `href` it is not a link; `note` adds a small label above the title
+(`Kommer snart`). `ratio`: `wide` 5:2 (default) or `landscape` 3:2. Put several in a `Grid`.
+
+## Pricing
+
+`<Pricing lead price="299" unit="kr/mån" note action={<ButtonLink …/>} features={[{ title, text }]} />`: one plan in a
+`Panel`, lead, price, small print and action on the left (5 of 12 columns), the features as a `CheckList` on the right;
+stacked on phones. Put it in a `Section` that carries the plan's name as its title.
+
+## Footer alignment
+
+`align="center"` centres the brand and tagline above the link columns, which sit side by side, and the legal line.

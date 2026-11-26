@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { ButtonLink } from '@frame/ui';
-import { CallToAction, FeatureGrid, Footer, Hero, Navbar, Stats, Steps } from './index';
+import { CallToAction, FeatureGrid, Footer, Hero, MediaCard, Navbar, Stats, Steps } from './index';
 
 describe('@frame/site', () => {
   it('Navbar marks the current page and names the home link', () => {
@@ -49,5 +49,15 @@ describe('@frame/site', () => {
       'Ready?',
     ]);
     expect(screen.getAllByRole('link', { name: 'Go' })).toHaveLength(2);
+  });
+  it('MediaCard is a link only with href', () => {
+    render(
+      <>
+        <MediaCard title="Open" image="/a.webp" href="/go" />
+        <MediaCard title="Soon" image="/b.webp" note="Coming soon" />
+      </>,
+    );
+    expect(screen.getByRole('link').textContent).toContain('Open');
+    expect(screen.getByText('Coming soon')).toBeTruthy();
   });
 });

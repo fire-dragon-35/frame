@@ -96,3 +96,8 @@ stacked on phones. Put it in a `Section` that carries the plan's name as its tit
 `Hero`, `Section` and `Page.Header` take `align="center"`: title, lead and actions are centred; a Hero's points stay a
 left-aligned list, centred as a block; a Section's content keeps its own layout. For a centred page use the same
 `size` on every block (usually `narrow`) so all edges line up.
+
+## Footer tone
+
+`tone="dark"`: a dark band, the foreground colour as background; titles and the brand in the background colour,
+links, tagline and legal line at 65 %. The brand element should inherit its colour (`color: inherit`).

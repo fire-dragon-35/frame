@@ -18,6 +18,8 @@ export interface FooterProps {
   size?: ContainerProps['size'];
   /** `start` (default): brand left, columns beside it. `center`: everything centred, brand above the columns. */
   align?: 'start' | 'center';
+  /** `dark`: a dark band (foreground colour as background, text in the background colour). */
+  tone?: 'default' | 'dark';
 }
 
 /** The site's footer: brand and tagline, link columns (side by side from 640 px; under `center` always), a legal line. */
@@ -28,9 +30,12 @@ export function Footer({
   legal,
   size,
   align = 'start',
+  tone = 'default',
 }: FooterProps) {
   return (
-    <footer className={cx(styles.footer, align === 'center' && styles.center)}>
+    <footer
+      className={cx(styles.footer, align === 'center' && styles.center, tone === 'dark' && styles.dark)}
+    >
       <Container size={size}>
         <div className={styles.grid}>
           <div className={styles.about}>

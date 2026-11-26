@@ -74,3 +74,23 @@
   flex-basis: 100%;
   justify-items: center;
 }
+.dark {
+  --footer-fg: var(--color-background, #fff);
+  --footer-soft: color-mix(in srgb, var(--color-background, #fff) 65%, transparent);
+  border-top: 0;
+  background: var(--color-foreground, #171717);
+  color: var(--footer-fg);
+}
+.dark .brand,
+.dark .title,
+.dark .link:hover {
+  color: var(--footer-fg);
+}
+.dark .tagline,
+.dark .link,
+.dark .legal {
+  color: var(--footer-soft);
+}
+.dark .legal {
+  border-top-color: color-mix(in srgb, var(--color-background, #fff) 15%, transparent);
+}

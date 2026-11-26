@@ -4,10 +4,14 @@
   border-top: 1px solid var(--color-border, #e5e5e5);
 }
 .grid {
-  display: grid;
-  gap: var(--space-6, 1.5rem);
+  /* phones: the brand block on its own row, then the link columns side by side at their own widths */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-6, 1.5rem) var(--space-4, 1rem);
 }
 .about {
+  flex-basis: 100%;
   display: grid;
   gap: var(--space-2, 0.5rem);
   align-content: start;
@@ -50,15 +54,22 @@
   border-radius: 2px;
 }
 .legal {
-  margin-top: var(--space-8, 2rem);
-  padding-top: var(--space-6, 1.5rem);
+  margin-top: var(--space-6, 1.5rem);
+  padding-top: var(--space-4, 1rem);
   border-top: 1px solid var(--color-border, #e5e5e5);
   font-size: var(--text-xs, 0.75rem);
   color: var(--color-muted, #525252);
 }
 @media (min-width: 640px) {
+  /* from 640 px one row: the brand block twice as wide as each link column */
   .grid {
-    grid-template-columns: 2fr repeat(auto-fit, minmax(8rem, 1fr));
+    flex-wrap: nowrap;
+  }
+  .about {
+    flex: 2 1 0;
+  }
+  .column {
+    flex: 1 1 0;
   }
 }
 .center {
@@ -71,8 +82,11 @@
   gap: var(--space-8, 2rem);
 }
 .center .about {
-  flex-basis: 100%;
+  flex: 0 0 100%;
   justify-items: center;
+}
+.center .column {
+  flex: 0 0 auto;
 }
 .dark {
   --footer-fg: var(--color-background, #fff);

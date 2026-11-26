@@ -78,7 +78,11 @@
   --footer-fg: var(--color-background, #fff);
   --footer-soft: color-mix(in srgb, var(--color-background, #fff) 65%, transparent);
   border-top: 0;
-  background: var(--color-foreground, #171717);
+  /* a soft dark: the foreground lightened with 15 % background; an app can set --footer-dark-bg */
+  background: var(
+    --footer-dark-bg,
+    color-mix(in srgb, var(--color-foreground, #171717) 85%, var(--color-background, #fff))
+  );
   color: var(--footer-fg);
 }
 .dark .brand,

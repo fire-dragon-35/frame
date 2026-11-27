@@ -12,6 +12,8 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   /** Never wrap (numbers, prices, short labels). */
   nowrap?: boolean;
+  /** `center` for a paragraph under a centred heading. */
+  align?: 'start' | 'center';
 }
 
 /** Text in the type scale. Owns font size, weight, colour and wrapping; never margins or layout. */
@@ -21,6 +23,7 @@ export function Text({
   tone = 'default',
   weight = 'regular',
   nowrap,
+  align = 'start',
   className,
   ...rest
 }: TextProps) {
@@ -32,6 +35,7 @@ export function Text({
         styles[tone],
         styles[weight],
         nowrap && styles.nowrap,
+        align === 'center' && styles.center,
         className,
       )}
       {...rest}

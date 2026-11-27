@@ -106,3 +106,10 @@ links, tagline and legal line at 65 %. The brand element should inherit its colo
 
 Under 768 px links and actions fold into a menu button. The open menu closes on a tap anywhere outside it, on Escape,
 after a link or action in it is chosen, and on a hash change.
+
+## Sign-in with Google, and back to the same page
+
+`<SignInForm google labels={…} />` adds a "Continue with Google" button above the email field (enable the Google
+provider in Supabase first). Both ways remember the page (`location.hash`) the sign-in started on and return there
+after the redirect, also when the email link opens a new tab. `useAuth().signInWithGoogle(redirectTo?)` does the same
+without the form. After Stripe Checkout the user comes back to `returnPath` with `?checkout=success` in the query.

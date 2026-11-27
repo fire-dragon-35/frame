@@ -2,6 +2,12 @@
 // priceId must be one of STRIPE_PRICE_IDS (comma separated); the first is the default.
 import { cors, customerFor, env, json, siteUrl, stripe, userOf } from '../_shared/frame.ts';
 
+function withQuery(url: string, key: string, value: string): string {
+  const u = new URL(url);
+  u.searchParams.set(key, value);
+  return u.toString();
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: cors });
   try {
@@ -20,10 +26,8 @@ Deno.serve(async (req) => {
       line_items: [{ price, quantity: 1 }],
       subscription_data: { metadata: { user_id: user.id } },
       allow_promotion_codes: true,
-      success_url:
-        siteUrl(body.returnPath) +
-        (String(body.returnPath ?? '/').includes('?') ? '&' : '?') +
-        'checkout=success',
+      // ?checkout=success goes in the query, never after a #hash page
+      success_url: withQuery(siteUrl(body.returnPath), 'checkout', 'success'),
       cancel_url: siteUrl(body.returnPath),
     });
     return json({ url: session.url });

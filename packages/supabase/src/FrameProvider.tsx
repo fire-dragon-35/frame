@@ -39,6 +39,25 @@ function isActive(s: Subscription | null) {
   );
 }
 
+/** The page (hash) a sign-in started on, so the user lands there again, also when the email link opens a new tab. */
+const RETURN_KEY = 'frame:return-to';
+function rememberPage() {
+  try {
+    if (window.location.hash) localStorage.setItem(RETURN_KEY, window.location.hash);
+  } catch {
+    /* private mode: the user lands on the root */
+  }
+}
+function returnToPage() {
+  try {
+    const hash = localStorage.getItem(RETURN_KEY);
+    localStorage.removeItem(RETURN_KEY);
+    if (hash && window.location.hash !== hash) window.location.hash = hash;
+  } catch {
+    /* private mode */
+  }
+}
+
 /**
  * Wrap the app once. Holds the Supabase session and the user's subscription (table frame_subscriptions, own row
  * only through RLS). The subscription is read again when the tab becomes visible, e.g. back from Stripe Checkout.
@@ -64,8 +83,9 @@ export function FrameProvider({
         if (!data.session) setLoading(false);
       }
     });
-    const { data } = supabase.auth.onAuthStateChange((_event, s) => {
+    const { data } = supabase.auth.onAuthStateChange((event, s) => {
       setSession(s);
+      if (event === 'SIGNED_IN') returnToPage();
       if (!s) setLoading(false);
     });
     return () => {
@@ -137,11 +157,22 @@ export function useAuth() {
     session,
     user,
     loading,
-    /** Sends a magic link; the user comes back to `redirectTo` signed in (default: this site's root, no hash; it must be in Supabase's redirect URLs). */
+    /**
+     * Sends a magic link; the user comes back to `redirectTo` signed in (default: this site's root, no hash; it must be
+     * in Supabase's redirect URLs), then to the page the sign-in started on.
+     */
     signInWithEmail: (
       email: string,
       redirectTo = window.location.origin + window.location.pathname,
-    ) => client.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } }),
+    ) => {
+      rememberPage();
+      return client.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } });
+    },
+    /** Google sign-in (enable the Google provider in Supabase); back on the same page afterwards. */
+    signInWithGoogle: (redirectTo = window.location.origin + window.location.pathname) => {
+      rememberPage();
+      return client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo } });
+    },
     signOut: () => client.auth.signOut(),
   };
 }

@@ -121,3 +121,5 @@ See their source in `packages/ui/src` (short, typed props) and the playground (`
 
 A `<ul>` of items, each a check mark in a soft `--color-primary` circle, an optional semibold title and a line of
 secondary text. `md` (default): title `--text-md`, text `--text-sm`; `lg`: `--text-lg` and `--text-md`.
+
+`Text align="center"` centres a paragraph, e.g. under a centred heading.

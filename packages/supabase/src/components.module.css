@@ -1,0 +1,16 @@
+.form {
+  width: 100%;
+  max-width: 22rem;
+}
+.or {
+  margin: 0;
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--color-muted, #525252);
+  text-align: center;
+}
+.mark {
+  width: 1.125em;
+  height: 1.125em;
+  margin-right: var(--space-2, 0.5rem);
+  flex: none;
+}

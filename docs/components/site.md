@@ -101,3 +101,8 @@ left-aligned list, centred as a block; a Section's content keeps its own layout.
 
 `tone="dark"`: a dark band, the foreground colour as background; titles and the brand in the background colour,
 links, tagline and legal line at 65 %. The brand element should inherit its colour (`color: inherit`).
+
+## Navbar menu
+
+Under 768 px links and actions fold into a menu button. The open menu closes on a tap anywhere outside it, on Escape,
+after a link or action in it is chosen, and on a hash change.

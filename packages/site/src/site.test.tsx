@@ -60,4 +60,13 @@ describe('@frame/site', () => {
     expect(screen.getByRole('link').textContent).toContain('Open');
     expect(screen.getByText('Coming soon')).toBeTruthy();
   });
+  it('Navbar menu closes on a tap outside it', () => {
+    const { container } = render(
+      <Navbar brand="A" brandLabel="A, home" links={[{ label: 'Map', href: '#/map' }]} />,
+    );
+    const menu = container.querySelector('details')!;
+    menu.open = true;
+    document.body.dispatchEvent(new Event('pointerdown', { bubbles: true }));
+    expect(menu.open).toBe(false);
+  });
 });

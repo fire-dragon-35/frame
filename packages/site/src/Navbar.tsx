@@ -1,5 +1,5 @@
 import { Container, type ContainerProps } from '@frame/core';
-import type { ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import styles from './Navbar.module.css';
 
 export interface NavLink {
@@ -27,6 +27,7 @@ export interface NavbarProps {
 /**
  * The site's top bar: brand at the left, page links, actions at the right. It scrolls with the page (never fixed).
  * Under 768 px links and actions fold into a menu button (a native `<details>`, so it works without JavaScript).
+ * The open menu closes on a tap anywhere outside it, on Escape, and after a link or action in it is chosen.
  */
 export function Navbar({
   brand,
@@ -38,6 +39,33 @@ export function Navbar({
   navLabel = 'Main',
   menuLabel = 'Menu',
 }: NavbarProps) {
+  const menu = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const close = () => {
+      if (menu.current) menu.current.open = false;
+    };
+    const onPointer = (e: PointerEvent) => {
+      if (menu.current?.open && !menu.current.contains(e.target as Node)) close();
+    };
+    // a link or button chosen in the open menu closes it (a tap on the sheet's own padding does not)
+    const onClick = (e: MouseEvent) => {
+      const t = e.target as HTMLElement;
+      if (menu.current?.open && menu.current.contains(t) && t.closest('a, button')) close();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+    };
+    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('click', onClick);
+    document.addEventListener('keydown', onKey);
+    addEventListener('hashchange', close);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer);
+      document.removeEventListener('click', onClick);
+      document.removeEventListener('keydown', onKey);
+      removeEventListener('hashchange', close);
+    };
+  }, []);
   const items = links.map((l) => (
     <a
       key={l.href}
@@ -62,7 +90,7 @@ export function Navbar({
           )}
           {actions && <div className={styles.actions}>{actions}</div>}
           {(items.length > 0 || actions) && (
-            <details className={styles.menu}>
+            <details ref={menu} className={styles.menu}>
               <summary className={styles.burger} aria-label={menuLabel}>
                 <span />
                 <span />
